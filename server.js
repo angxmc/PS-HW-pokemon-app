@@ -1,5 +1,8 @@
 //require express
 const express = require("express");
+//require the database of pokemon
+const pokemon = require('./models/pokemon')
+
 //set express to a variable
 const app = express();
 //set a variable of port to 3000
@@ -13,4 +16,9 @@ app.listen(port, () =>{
 //include an route / that will display 'Welcome to the Pokemon App!
 app.get('/', (req, res) => {
     res.send('Welcome to the Pokemon App!')
+})
+
+//create a GET route /pokemon that will display the pokemon data
+app.get('/pokemon', (req,res) => {
+    res.send(pokemon)
 })
