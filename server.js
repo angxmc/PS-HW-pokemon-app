@@ -25,5 +25,11 @@ app.get("/", (req, res) => {
 
 //create a GET route /pokemon that will display the pokemon data
 app.get("/pokemon", (req, res) => {
-  res.render("Index");
+    
+  res.render("Index", {pokemon});
 });
+
+app.get('/pokemon/:id', (req,res) => {
+  const {id} = req.params
+  res.send(id)
+})
