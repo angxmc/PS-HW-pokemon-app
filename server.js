@@ -13,10 +13,6 @@ app.set("view engine", "jsx");
 app.engine("jsx", jsxEngine());
 
 
-//set app to listen to the port and console log it so we know it's working
-app.listen(port, () => {
-  console.log(`app is running on port: ${port}`);
-});
 
 //include an route / that will display 'Welcome to the Pokemon App!
 app.get("/", (req, res) => {
@@ -25,11 +21,18 @@ app.get("/", (req, res) => {
 
 //create a GET route /pokemon that will display the pokemon data
 app.get("/pokemon", (req, res) => {
-    
+  
   res.render("Index", {pokemon});
 });
 
+// -Show Route - 
 app.get('/pokemon/:id', (req,res) => {
   const {id} = req.params
-  res.send(id)
+  res.render('Show', {pokemon: pokemon[id]})
 })
+
+
+//set app to listen to the port and console log it so we know it's working
+app.listen(port, () => {
+  console.log(`app is running on port: ${port}`);
+});
